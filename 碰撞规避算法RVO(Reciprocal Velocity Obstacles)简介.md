@@ -12,7 +12,7 @@
 
 RVO算法是在VO算法基础之上，成功优化解决了路径抖动问题。所以先简单介绍下VO的相关概念。
 
-![](res\RVO-vs-VO.png)
+![](res/RVO-vs-VO.png)
 
 <font color=gray size=2>如图，左边是基础VO算法，两个相向而行的物体，在规避碰撞时产生了路径抖动。而右图，RVO解决了这一问题。具体证明请看下文。</font>  
 
@@ -20,7 +20,7 @@ RVO算法是在VO算法基础之上，成功优化解决了路径抖动问题。
 
   &emsp;&emsp;设A为在平面移动的物体（Agent），其在平面的位置记为$p_A$，B为平面中移动的障碍，其位置记为$p_B$。速度障碍记为$VO_B^A(v_B)$，它表示障碍物B如果以速度$v_B$行进，将来某一时刻，会造成A，B相撞的A物体速度$v_A$的集合。其几何意义如下图所示：
 
-  ![](res\vo.png)
+  ![](res/vo.png)
 
   <center><font color=gray size=2>图1</font></center>
 
@@ -57,7 +57,7 @@ v_A\in VO_B^A(v_B)\Leftrightarrow v_B+u\in VO_B^A(v_B+u).
 $$
 &emsp;&emsp;考虑速度障碍之外的区域。把这部分区域分为坐半区和右半区，可以看到，左半区和右半区是有重叠部分的，如下图所示。
 
-![](res\noVO.png)
+![](res/noVO.png)
 
 <center><font color=gray size=2>图2</font></center>
 
