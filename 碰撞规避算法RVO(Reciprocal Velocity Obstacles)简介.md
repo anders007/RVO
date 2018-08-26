@@ -41,17 +41,17 @@ $$
 $$
 VO_B^A(v_B)=\lbrace v_A|\lambda(p_A,v_A-v_B)\cap B\oplus-A\neq\emptyset \rbrace.
 $$
-&emsp;&emsp;它的意义是，如果$v_A\in VO_B^A(v_B)$表示拥有速度v_A的物体A与拥有速度v_B的物体B，将在未来一定时间内发生碰撞。如果$v_A\notin VO_B^A(v_B)$，则表示A与B不会发生碰撞。几何意义参看图1。
+&emsp;&emsp;它的意义是，如果$v_A\in VO_B^A(v_B)$表示拥有速度$v_A$的物体A与拥有速度$v_B$的物体B，将在未来一定时间内发生碰撞。如果$v_A\notin VO_B^A(v_B)$，则表示A与B不会发生碰撞。几何意义参看图1。
 
 - ### 性质
 
-**定理 2**（对称性）：
+**引理 2**（对称性）：
 $$
 v_A\in VO_B^A(v_B)\Leftrightarrow v_B\in VO_A^B(v_A).
 $$
-&emsp;&emsp;显而易见，如果v_A在B的速度阻挡中，表示A会撞上B，当然也表示B会撞上A。
+&emsp;&emsp;显而易见，如果$v_A$在B的速度阻挡中，表示A会撞上B，当然也表示B会撞上A。
 
-**定理 3**（平移不变性）：
+**引理 3**（平移不变性）：
 $$
 v_A\in VO_B^A(v_B)\Leftrightarrow v_B+u\in VO_B^A(v_B+u).
 $$
@@ -61,7 +61,7 @@ $$
 
 <center><font color=gray size=2>图2</font></center>
 
-&emsp;&emsp;引入两个符号，$\overleftarrow{\notin }$和$\overrightarrow{\notin }$。如果速度v_A在VO_B^A(v_B)之外的左半区，表示v_A会使物体A从物体B的左边通过，记为：
+&emsp;&emsp;引入两个符号，$\overleftarrow{\notin }$和$\overrightarrow{\notin }$。如果速度$v_A$在$VO_B^A(v_B)$之外的左半区，表示$v_A$会使物体A从物体B的左边通过，记为：
 $$
 v_A\overleftarrow{\notin }VO_B^A(v_B)
 $$
@@ -69,16 +69,16 @@ $$
 $$
 v_A\overrightarrow{\notin }VO_B^A(v_B)
 $$
-定理2，3同样适用于速度障碍之外的区域。也就是说定理2，3中的$\in$可以等价的转换为$\notin$，$\overleftarrow{\notin }$和$\overrightarrow{\notin }$。
+引理2，3同样适用于速度障碍之外的区域。也就是说引理2，3中的$\in$可以等价的转换为$\notin$，$\overleftarrow{\notin }$和$\overrightarrow{\notin }$。
 
-**定理 4**（凸性）：
+**引理 4**（凸性）：
 $$
 v_A\overrightarrow{\notin}VO_B^A(v_B)\wedge v_A^,\overrightarrow{\notin}VO_B^A(v_B)\Rightarrow(1-\alpha)v_a+\alpha v_A^,\overrightarrow{\notin}VO_B^A(v_B),0\leq\alpha\leq1.
 $$
 &emsp;&emsp;这是根据[凸集](https://en.wikipedia.org/wiki/Convex_set)性质得到的。连接凸集中任意两点的一条线段，该线段上的每一个点都属于该凸集。x,y两点属于凸集S，那么点$(1-\alpha)x + \alpha y，0\leq\alpha \leq1.$必然也属于S。
 
 
-&emsp;&emsp;考虑这种情况，两个物体A和B，分别以速度v_A和速度v_B向各自的目标点行进，如果有$v_A\in VO_B^A(v_B)​$，那么同时$v_B\in VO_A^B(v_A)​$，于是他们在将来某一时刻会发生碰撞。此时，为了避免碰撞，A决定改变速度为$v_A^,​$避免撞上B，于是有$v_A^,\notin VO_B^A(v_B)​$。与此同时，B也决定改变速度为$v_B^,​$，避免撞上A，于是有$v_B^,\notin VO_A^B(v_A)​$。那么根据**定理2**，老的速度也必定不在新速度的VO里，于是有$v_A\notin VO_B^A(v_B^,)​$同时$v_B\notin VO_A^B(v_A^,)​$。由于A和B有一个最终的目标，在避障之后，需要往目标点走，而老速度$v_A​$和$v_B​$并不在当前速度$v_A^,​$和$v_B^,​$的VO里，于是老的速度会被重新选择。然而在下一个Tick，$v_A​$和$v_B​$被检测出会发生碰撞，于是又会触发速度改变，速度改变完成后，又会回到老的向目标点的速度。如此往复循环，直到彻底不会发生碰撞。这就是VO算法会发生抖动的原因。参看图0。
+&emsp;&emsp;考虑这种情况，两个物体A和B，分别以速度$v_A$和速度$v_B$向各自的目标点行进，如果有$v_A\in VO_B^A(v_B)$，那么同时$v_B\in VO_A^B(v_A)$，于是他们在将来某一时刻会发生碰撞。此时，为了避免碰撞，A决定改变速度为$v_A^,$避免撞上B，于是有$v_A^,\notin VO_B^A(v_B)$。与此同时，B也决定改变速度为$v_B^,$，避免撞上A，于是有$v_B^,\notin VO_A^B(v_A)$。那么根据**引理2**，老的速度也必定不在新速度的VO里，于是有$v_A\notin VO_B^A(v_B^,)$同时$v_B\notin VO_A^B(v_A^,)$。由于A和B有一个最终的目标，在避障之后，需要往目标点走，而老速度$v_A$和$v_B$并不在当前速度$v_A^,$和$v_B^,$的VO里，于是老的速度会被重新选择。然而在下一个Tick，$v_A$和$v_B$被检测出会发生碰撞，于是又会触发速度改变，速度改变完成后，又会回到老的向目标点的速度。如此往复循环，直到彻底不会发生碰撞。这就是VO算法会发生抖动的原因。参看图0。
 
 
 
@@ -94,3 +94,80 @@ $$
 
 ![](res/RVO.png)
 =======
+
+1. **无碰撞**：$v_A$为物体A的当前速度，$v_B$为物体B的当前速度，此时A和B同时选择了一个在对方相互速度障碍（RVO）之外的新的速度（$v_A^,$和$v_B^,$）。如果A和B在同一侧避开对方，那么RVO是能安全避障的。
+
+   **定理 6**（无碰撞）
+   $$
+   v_A^,\overrightarrow{\notin}RVO_B^A(v_B,v_A)\wedge v_B^,\overrightarrow{\notin}RVO_A^B(v_A,v_B)\Rightarrow v_A^,\overrightarrow{\notin}VO_B^A(v_B^,)\wedge v_B^,\overrightarrow{\notin}VO_A^B(v_A^,)
+   $$
+   **证明：**$v_A^,\overrightarrow{\notin}RVO_B^A(v_B,v_A)\wedge v_B^,\overrightarrow{\notin}RVO_A^B(v_A,v_B)$
+
+   $\Leftrightarrow${**定义 5**和**引理 2**}
+
+   $2v_A^,-v_A\overrightarrow{\notin}VO_B^A(v_B)\wedge v_A\overrightarrow{\notin}VO_B^A(2v_B^,-v_B)$
+
+   $\Leftrightarrow${**引理 3**}
+
+   $2v_A^,-v_A-v_B\overrightarrow{\notin}VO_B^A(0)\wedge v_A+v_B-2v_B^,\overrightarrow{\notin}VO_B^A(0)$
+
+   $\Rightarrow${**引理 4**，$\alpha=\frac{1}{2}$}
+
+   $v_A^,-v_B^,\overrightarrow{\notin}VO_B^A(0)$
+
+   $\Leftrightarrow${**引理 3**和**引理 2**}
+
+   $v_A^,\overrightarrow{\notin}VO_B^A(v_B^,)\wedge v_B^,\overrightarrow{\notin}VO_A^B(v_A^,)$
+
+   符号$\overrightarrow{\notin}$与符号$\overleftarrow{\notin}$可以等价转换。
+
+2. **同侧避障：**两个物体会选择与当前速度距离最小的新速度，在同一侧避开与对方相撞。证明基于如下2个方面：
+
+   (1).对于物体A，如果$v_A+u$是与$v_A$距离最近，且在B的相互速度障碍（RVO）之外的速度，那么$v_B-u$是与$v_B$距离最近，且在A的相互速度障碍（RVO）之外的速度。
+
+   (2).对于物体A，如果与当前速度最近的RVO之外速度，在RVO的右侧（或者左侧），那么对于物体B，它最近的RVO避障速度，也在A物体的RVO的右侧（或者左侧）。
+
+
+
+   **引理 7**（同侧避障）
+   $$
+   v_A+u\notin RVO_B^A(v_B,v_A)\Leftrightarrow v_B-u\notin RVO_A^B(v_A,v_B)
+   $$
+   **证明：**$v_A+u\notin RVO_B^A(v_B,v_A)$
+
+   $\Leftrightarrow${**定义 5**}
+
+   $2(v_A+u)-v_A\notin VO_B^A(v_B)$
+
+   $\Leftrightarrow${**引理 3**和**引理2**}
+
+   $2(v_B-u)-v_B\notin VO_A^B(v_A)$
+
+   $\Leftrightarrow${**定义 5**}
+
+   $v_B-u\notin RVO_A^B(v_A,v_B)$
+
+   符号$\notin$能等价的转换为$\overrightarrow{\notin}$和$\overleftarrow{\notin}$，或者$\in$。
+
+3. **无抖动：**
+
+   **定理 8**（无抖动）
+   $$
+   v_A\in RVO_B^A(v_B,v_A)\Leftrightarrow v_A\in RVO_B^A(v_B-u,v_A+u)
+   $$
+   **证明：**$v_A\in RVO_B^A(v_B,v_A)$
+
+   $\Leftrightarrow${**定义 5**和**引理 3**}
+
+   $2v_A-v_A-v_B\in VO_B^A(0)$
+
+   $\Leftrightarrow$
+
+   $2v_A-v_A-v_B-u+u\in VO_B^A(0)$
+
+   $\Leftrightarrow${**引理 3**和**定义 5**}
+
+   $v_A\in RVO_B^A(v_B-u,v_A+u)$
+
+   &emsp;&emsp;因此，在物体A和B分别选择新速度$v_A+u$和$v_B-u$之后，老速度$v_A$仍然在新速度的RVO内，老速度并不会被重新选择（VO算法中，老速度在下一Tick会被重新选择，因此发生抖动）。事实上，在选择最近的避障速度$v_A+u$和$v_B-u$之后，对A和B来说，对方的RVO区域仍在相同的位置，因此速度$v_A+u$和$v_B-u$仍然是下一Tick的首选速度，从而避免了抖动。
+
