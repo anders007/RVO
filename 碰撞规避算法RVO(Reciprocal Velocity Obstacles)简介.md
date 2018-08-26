@@ -41,7 +41,7 @@ $$
 $$
 VO_B^A(v_B)=\lbrace v_A|\lambda(p_A,v_A-v_B)\cap B\oplus-A\neq\emptyset \rbrace.
 $$
-&emsp;&emsp;它的意义是，如果v_A\epsilon VO_B^A(v_B)表示拥有速度v_A的物体A与拥有速度v_B的物体B，将在未来一定时间内发生碰撞。如果v_A\notin VO_B^A(v_B)，则表示A与B不会发生碰撞。几何意义参看图1。
+&emsp;&emsp;它的意义是，如果$v_A\in VO_B^A(v_B)$表示拥有速度v_A的物体A与拥有速度v_B的物体B，将在未来一定时间内发生碰撞。如果$v_A\notin VO_B^A(v_B)$，则表示A与B不会发生碰撞。几何意义参看图1。
 
 - ### 性质
 
@@ -61,7 +61,7 @@ $$
 
 <center><font color=gray size=2>图2</font></center>
 
-&emsp;&emsp;引入两个符号，“\overleftarrow{\notin }”和“\overrightarrow{\notin }”。如果速度v_A在VO_B^A(v_B)之外的左半区，表示v_A会使物体A从物体B的左边通过，记为：
+&emsp;&emsp;引入两个符号，$\overleftarrow{\notin }$和$\overrightarrow{\notin }$。如果速度v_A在VO_B^A(v_B)之外的左半区，表示v_A会使物体A从物体B的左边通过，记为：
 $$
 v_A\overleftarrow{\notin }VO_B^A(v_B)
 $$
