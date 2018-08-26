@@ -73,9 +73,10 @@ $$
 
 **定理 4**（凸性）：
 $$
-v_A\overrightarrow{\notin}VO_B^A(v_B)\wedge v_A^,\overrightarrow{\notin}VO_B^A(v_B)\Rightarrow(1-\alpha)v_a+\alpha v_A^,\overrightarrow{\notin}VO_B^A(v_B),0\leq\alpha\leq1.
+v_A\overrightarrow{\notin}VO_B^A(v_B)\wedge v_A^,\overrightarrow{\notin}VO_B^A(v_B)\Rightarrow(1-\alpha)v_a+\alpha v_A^,\overrightarrow{\notin}VO_B^A(v_B),0\leq\alpha\leq1.这是根据[凸集](https://en.wikipedia.org/wiki/Convex_set)性质得到的。连接凸集中任意两点的一条线段，该线段上的每一个点都属于该凸集。x,y两点属于凸集S，那么点$(1-\alpha)x + \alpha y，0\leq\alpha \leq1.$必然也属于S。
 $$
-这是根据[凸集](https://en.wikipedia.org/wiki/Convex_set)性质得到的。连接凸集中任意两点的一条线段，该线段上的每一个点都属于该凸集。x,y两点属于凸集S，那么点$(1-\alpha)x + \alpha y，0\leq\alpha \leq1.$必然也属于S。
+&emsp;&emsp;这是根据[凸集](https://en.wikipedia.org/wiki/Convex_set)性质得到的。连接凸集中任意两点的一条线段，该线段上的每一个点都属于该凸集。x,y两点属于凸集S，那么点$(1-\alpha)x + \alpha y，0\leq\alpha \leq1.$必然也属于S。
+
 
 &emsp;&emsp;考虑这种情况，两个物体A和B，分别以速度v_A和速度v_B向各自的目标点行进，如果有$v_A\in VO_B^A(v_B)$，那么同时$v_B\in VO_A^B(v_A)$，于是他们在将来某一时刻会发生碰撞。此时，为了避免碰撞，A决定改变速度为$v_A^,$避免撞上B，于是有$v_A^,\notin VO_B^A(v_B)$。与此同时，B也决定改变速度为$v_B^,$，避免撞上A，于是有$v_B^,\notin VO_A^B(v_A)$。那么根据**定理2**，老的速度也必定不在新速度的VO里，于是有$v_A\notin VO_B^A(v_B^,)$同时$v_B\notin VO_A^B(v_A^,)$。由于A和B有一个最终的目标，在避障之后，需要往目标点走，而老速度$v_A$和$v_B$并不在当前速度$v_A^,$和$v_B^,$的VO里，于是老的速度会被重新选择。然而在下一个Tick，$v_A$和$v_B$被检测出会发生碰撞，于是又会触发速度改变，速度改变完成后，又会回到老的向目标点的速度。如此往复循环，直到彻底不会发生碰撞。这就是VO算法会发生抖动的原因。参看图0。
 
@@ -92,3 +93,4 @@ $$
 &emsp;&emsp;物体B对A的相互速度障碍$RVO_B^A(v_B,v_A)$包含所有当前速度$v_A$与$VO_B^A(v_B)$里速度的平均速度。其几何意义如图3所示，相当于一个顶点在$\frac{v_A+v_B}{2}$处的$VO_B^A(v_B)$。
 
 ![](res/RVO.png)
+=======
